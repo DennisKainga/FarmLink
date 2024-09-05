@@ -1,0 +1,35 @@
+/* static/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #ddd;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.content {
+    margin: 2em;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+}
+
+form input, form select, form button {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+}
