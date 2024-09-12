@@ -8,9 +8,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+
 class RegisterView(APIView):
     def get(self, request):
-        return render(request, 'registration.html')
+        return render(request, 'users/registration.html')
 
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
@@ -22,4 +23,4 @@ class RegisterView(APIView):
             for field, errors in serializer.errors.items():
                 for error in errors:
                     messages.error(request, f"{field}: {error}")
-            return render(request, '/users/registration.html', status=status.HTTP_400_BAD_REQUEST)
+            return render(request, 'users/registration.html', status=status.HTTP_400_BAD_REQUEST)

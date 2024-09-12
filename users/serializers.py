@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -13,10 +14,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         if get_user_model().objects.filter(email=email).exists():
             raise serializers.ValidationError("Email must be unique.")
         return email
-
-    def validate_password(self, password):
-        # Implement password strength validation logic here
-        pass
 
     def create(self, validated_data):
         UserModel = get_user_model()

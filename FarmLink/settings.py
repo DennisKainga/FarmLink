@@ -81,18 +81,16 @@ WSGI_APPLICATION = 'FarmLink.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'farm_link_db', 
-        'USER': 'root',  
-        'PASSWORD': 'Nyeba@2010',  
-        'HOST': 'localhost',  
-        'PORT': '3306',  
+        'NAME': 'farm_link_db',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
-
-
 
 
 # Password validation
@@ -140,8 +138,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-#LOGIN_REDIRECT_URL = '/base.html'  # Redirect to home after login
-#LOGOUT_REDIRECT_URL = '/base.html'  # Redirect to home after logout
+# LOGIN_REDIRECT_URL = '/base.html'  # Redirect to home after login
+# LOGOUT_REDIRECT_URL = '/base.html'  # Redirect to home after logout
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -149,3 +147,5 @@ REST_FRAMEWORK = {
     )
 }
 
+
+AUTH_USER_MODEL = 'users.CustomUser'
