@@ -22,4 +22,4 @@ class RegisterView(APIView):
             for field, errors in serializer.errors.items():
                 for error in errors:
                     messages.error(request, f"{field}: {error}")
-            return render(request, '/users/registration.html', status=status.HTTP_400_BAD_REQUEST)
+            return render(request, 'registration.html', status=status.HTTP_400_BAD_REQUEST)
