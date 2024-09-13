@@ -8,19 +8,20 @@ USER_TYPE_CHOICES = (
     ('expert', 'Expert'),
 )
 
+
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
-    user_type = models.IntegerField(choices=USER_TYPE_CHOICES)
+    user_type = models.CharField(
+        max_length=10, choices=USER_TYPE_CHOICES)
 
-    # Add related_name to avoid conflict with auth.User groups and user_permissions
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name='customuser_set',  # Change related_name to avoid conflict
+        related_name='customuser_set',
         blank=True
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name='customuser_set',  # Change related_name to avoid conflict
+        related_name='customuser_set',
         blank=True
     )
 
@@ -29,6 +30,16 @@ class CustomUser(AbstractUser):
 
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+    class Meta:
+        verbose_name = 'Custom User'
+        verbose_name_plural = 'Custom Users'
+
+        permissions = [
+            ("can_view_custom_content", "Can view custom content"),
+            ("can_edit_custom_content", "Can edit custom content"),
+        ]
+        ordering = ['user_type']
 
     class Meta:
         verbose_name = 'Custom User'
